@@ -1,1 +1,1 @@
-require "middleman-git-time"
+require 'middleman-git-time'
