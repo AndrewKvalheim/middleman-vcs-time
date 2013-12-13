@@ -5,6 +5,7 @@ Gem::Specification.new do |gem|
   gem.name     = 'middleman-git-time'
   gem.version  = '0.0.1'
   gem.platform = Gem::Platform::RUBY
+  gem.license  = 'MIT'
   gem.authors  = ['Andrew Kvalheim']
   gem.email    = ['Andrew@Kvalhe.im']
   gem.homepage = 'https://github.com/AndrewKvalheim/middleman-git-time'
