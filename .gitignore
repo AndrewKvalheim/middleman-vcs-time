@@ -1,8 +1,6 @@
-# Ignore bundler lock file
+# Bundler
 /Gemfile.lock
 
-# Ignore pkg folder
+# Packaging
 /pkg
-
-# Ignore temporary files
 /tmp
