@@ -1,5 +1,7 @@
 # middleman-vcs-time
 
+[![Build Status](https://travis-ci.org/AndrewKvalheim/middleman-vcs-time.png?branch=master)](https://travis-ci.org/AndrewKvalheim/middleman-vcs-time)
+
 Provides means to look up the last-modified times of [Middleman][] sitemap
 resources according to a version control system.
 
