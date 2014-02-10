@@ -12,7 +12,9 @@ module Middleman
       end
 
       def self.load
-        Middleman::Sitemap::Resource.include ResourceIncludes
+        Middleman::Sitemap::Resource.class_eval do
+          include ResourceIncludes
+        end
       end
     end
   end

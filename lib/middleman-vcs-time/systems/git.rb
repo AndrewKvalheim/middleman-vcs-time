@@ -36,7 +36,10 @@ module Middleman
       def self.load
         if available?
           super
-          Middleman::Sitemap::Resource.include ResourceIncludes
+
+          Middleman::Sitemap::Resource.class_eval do
+            include ResourceIncludes
+          end
         end
       end
 
