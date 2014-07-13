@@ -1,5 +1,3 @@
-before_install:
-  - sudo apt-get install --quiet git
 env:
   - CUCUMBER_FORMAT=pretty
 language: ruby
