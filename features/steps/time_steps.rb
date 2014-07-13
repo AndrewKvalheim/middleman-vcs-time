@@ -8,7 +8,7 @@ Then /^I should see the current time$/ do
     window.include?(digits.to_i)
   end
 
-  expect(has_current_time).to be_true
+  expect(has_current_time).to be_truthy
 end
 
 Then /^I should see the modification time for a file named "([^\"]*)"$/ do |file|

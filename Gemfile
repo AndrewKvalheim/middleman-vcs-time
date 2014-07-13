@@ -15,5 +15,5 @@ group :test do
   gem 'aruba'
   gem 'cucumber'
   gem 'fivemat'
-  gem 'rspec'
+  gem 'rspec', '~> 3.0'
 end
