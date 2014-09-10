@@ -16,5 +16,5 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(features|fixtures)/})
   gem.require_paths = ['lib']
 
-  gem.add_runtime_dependency 'middleman-core', ['>= 3.2.0']
+  gem.add_runtime_dependency 'middleman-core', ['~> 3.2']
 end
