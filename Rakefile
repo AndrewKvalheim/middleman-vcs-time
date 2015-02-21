@@ -5,11 +5,11 @@ require 'cucumber/rake/task'
 
 Cucumber::Rake::Task.new(:cucumber, 'Run features that should pass') do |t|
   format = ENV['CUCUMBER_FORMAT'] || 'Fivemat'
-  t.cucumber_opts = "--color --tags ~@wip --strict --format #{format}"
+  t.cucumber_opts = "--color --tags ~@wip --strict --format #{ format }"
 end
 
 require 'rake/clean'
 
-task :test => ['cucumber']
+task test: ['cucumber']
 
-task :default => :test
+task default: :test

@@ -1,13 +1,11 @@
 module Middleman
   module VCSTime
+    # Interface to filesystem metadata
     class Fallback
+      # Extensions to sitemap resources
       module ResourceIncludes
         def mtime
-          if File.exists?(source_file)
-            File.mtime(source_file)
-          else
-            Time.now
-          end
+          File.exist?(source_file) ? File.mtime(source_file) : Time.now
         end
       end
 

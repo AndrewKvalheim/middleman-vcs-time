@@ -3,7 +3,7 @@ TOLERANCE = 5
 Then /^I should see the current time$/ do
   now = Time.now.to_i
 
-  window = (now - TOLERANCE .. now + TOLERANCE)
+  window = ((now - TOLERANCE)..(now + TOLERANCE))
   has_current_time = @browser.last_response.body.scan(/\d+/).any? do |digits|
     window.include?(digits.to_i)
   end
@@ -11,7 +11,7 @@ Then /^I should see the current time$/ do
   expect(has_current_time).to be_truthy
 end
 
-Then /^I should see the modification time for a file named "([^\"]*)"$/ do |file|
+Then /^I should see the file modification time of "([^\"]*)"$/ do |file|
   target = File.join(current_dir, file)
-  step %Q{I should see "#{File.mtime(target).to_i}"}
+  step %(I should see "#{ File.mtime(target).to_i }")
 end

@@ -8,4 +8,4 @@ Feature: Fallback
   Scenario: Use the file modification time when there is no version control system
     Given the Server is running at "no-vcs-app"
     When I go to "/show-mtime.html"
-    Then I should see the modification time for a file named "source/show-mtime.html.erb"
+    Then I should see the file modification time of "source/show-mtime.html.erb"

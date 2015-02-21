@@ -2,6 +2,7 @@ require 'middleman-core'
 
 module Middleman
   module VCSTime
+    # Middleman extension
     class Extension < ::Middleman::Extension
       def initialize(app, **options_hash, &block)
         super

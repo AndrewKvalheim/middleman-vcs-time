@@ -1,12 +1,19 @@
 module Middleman
   module GeneratedResources
+    # Resource with no source file
     class GeneratedResource < Middleman::Sitemap::Resource
+      def initialize(store, path, &renderer)
+        @renderer = renderer
+
+        super store, path
+      end
+
       def binary?
         false
       end
 
       def render
-        raise NotImplementedError
+        @renderer.call(self)
       end
 
       def source_file
@@ -14,17 +21,14 @@ module Middleman
       end
     end
 
+    # Sitemap manipulator
     class Extension < Middleman::Extension
       def manipulate_resource_list(resources)
-        resource = GeneratedResource.new(app.sitemap, 'show-mtime_generated.html')
+        path = 'show-mtime_generated.html'
 
-        class << resource
-          def render
-            "This page was last modified at #{mtime.strftime('%s')}."
-          end
+        resources << GeneratedResource.new(app.sitemap, path) do |resource|
+          "This page was last modified at #{ resource.mtime.strftime('%s') }."
         end
-
-        resources << resource
       end
     end
   end
