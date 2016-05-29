@@ -4,7 +4,7 @@ Then /^I should see the current time$/ do
   now = Time.now.to_i
 
   window = ((now - TOLERANCE)..(now + TOLERANCE))
-  has_current_time = @browser.last_response.body.scan(/\d+/).any? do |digits|
+  has_current_time = page.body.scan(/\d+/).any? do |digits|
     window.include?(digits.to_i)
   end
 
@@ -12,6 +12,6 @@ Then /^I should see the current time$/ do
 end
 
 Then /^I should see the file modification time of "([^\"]*)"$/ do |file|
-  target = File.join(current_dir, file)
+  target = expand_path(file)
   step %(I should see "#{ File.mtime(target).to_i }")
 end

@@ -3,8 +3,8 @@
 Given /^the Server is running under Git at "([^\"]*)"$/ do |app_path|
   step %(a fixture app "#{ app_path }")
 
-  set_env 'GIT_DIR', File.join(absolute_path, 'dotgit')
-  set_env 'GIT_WORK_TREE', absolute_path
+  ENV['GIT_DIR'] = expand_path('dotgit')
+  ENV['GIT_WORK_TREE'] = expand_path('.')
 
   step %(the Server is running)
 end

@@ -1,6 +1,11 @@
+# Appraisal
+/gemfiles/*.gemfile.lock
+
+# Aruba
+/tmp
+
 # Bundler
 /Gemfile.lock
 
-# Packaging
+# RubyGems
 /pkg
-/tmp

@@ -5,5 +5,5 @@ require File.join(PROJECT_ROOT_PATH, 'lib', 'middleman-vcs-time')
 
 # Prevent fixtures from detecting the parent repository
 Before do
-  set_env 'GIT_DIR', File::NULL
+  ENV['GIT_DIR'] = File::NULL
 end

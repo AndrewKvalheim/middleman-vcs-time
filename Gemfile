@@ -2,18 +2,11 @@ source 'https://rubygems.org'
 
 gemspec
 
-group :development do
-  gem 'middleman', github: 'middleman/middleman', branch: 'v3-stable'
-  gem 'rake'
-  gem 'rdoc'
-  gem 'travis'
-  gem 'websocket-native'
-  gem 'yard'
-end
+gem 'middleman', github: 'middleman/middleman', branch: 'v3-stable'
 
 group :test do
-  gem 'aruba', '~> 0.6.2'
-  gem 'cucumber'
-  gem 'fivemat'
+  gem 'appraisal', '~> 2.0'
+  gem 'aruba', '~> 0.14'
+  gem 'cucumber', '~> 2.0'
   gem 'rspec', '~> 3.0'
 end
