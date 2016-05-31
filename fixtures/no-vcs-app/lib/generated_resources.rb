@@ -1,37 +1,36 @@
-module Middleman
-  module GeneratedResources
-    # Resource with no source file
-    class GeneratedResource < Middleman::Sitemap::Resource
-      def initialize(store, path, &renderer)
-        @renderer = renderer
+module GeneratedResources
+  # Resource with a configurable renderer
+  class GeneratedResource < ::Middleman::Sitemap::Resource
+    attr_accessor :renderer
 
-        super store, path
-      end
+    def render(options = {}, locals = {})
+      @renderer.call(self, options, locals)
+    end
+  end
 
-      def binary?
-        false
-      end
+  # Sitemap manipulator
+  class Extension < ::Middleman::Extension
+    expose_to_config :generate
 
-      def render
-        @renderer.call(self)
-      end
+    def initialize(app, options_hash = {})
+      super
 
-      def source_file
-        ''
-      end
+      @renderers = {}
     end
 
-    # Sitemap manipulator
-    class Extension < Middleman::Extension
-      def manipulate_resource_list(resources)
-        path = 'show-mtime_generated.html'
+    def generate(path, &renderer)
+      @renderers[path] = renderer
+    end
 
-        resources << GeneratedResource.new(app.sitemap, path) do |resource|
-          "This page was last modified at #{ resource.mtime.strftime('%s') }."
+    def manipulate_resource_list(resources)
+      resources + @renderers.map do |path, renderer|
+        GeneratedResource.new(app.sitemap, path, nil).tap do |resource|
+          resource.renderer = renderer
         end
       end
     end
   end
 end
 
-Middleman::GeneratedResources::Extension.register :generated_resources
+extension = GeneratedResources::Extension
+::Middleman::Extensions.register :generated_resources, extension

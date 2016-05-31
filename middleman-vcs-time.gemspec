@@ -17,13 +17,13 @@ Gem::Specification.new do |gem|
 
   # Content
   gem.files         = `git ls-files -z`.split("\0")
-  gem.test_files    = gem.files.grep(/^(features|fixtures)\//)
+  gem.test_files    = gem.files.grep(%r{^(features|fixtures)/})
   gem.require_paths = ['lib']
 
   # Dependencies
   gem.platform              = Gem::Platform::RUBY
-  gem.required_ruby_version = '~> 2.1'
-  gem.add_runtime_dependency 'middleman-core', '~> 3.4'
+  gem.required_ruby_version = '~> 2.2'
+  gem.add_runtime_dependency 'middleman-core', '~> 4.0'
 
   # Development dependencies
   gem.add_development_dependency 'rake'

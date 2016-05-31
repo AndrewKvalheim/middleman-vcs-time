@@ -6,8 +6,6 @@ module Middleman
     class Git < Fallback
       # Extensions to sitemap resources
       module ResourceIncludes
-        GIT_STATUS = %w(git status --porcelain --)
-
         def mtime
           @_mtime ||= git_clean? ? git_author_time : super
         end
@@ -18,11 +16,11 @@ module Middleman
         class Numstats
           include Enumerable
 
-          GIT_NUMSTAT = %w(git log --follow --numstat --format=%at --)
+          GIT_NUMSTAT = %w(git log --follow --numstat --format=%at --).freeze
 
           # Parsed commit entry
           class Commit
-            attr_reader :deletions, :insertions, :time
+            attr_reader :time
 
             def initialize(raw)
               @insertions, @deletions = raw.last.split("\t").take(2).map(&:to_i)
@@ -30,7 +28,7 @@ module Middleman
             end
 
             def changed?
-              deletions.nonzero? || insertions.nonzero?
+              @deletions.nonzero? || @insertions.nonzero?
             end
           end
 
@@ -44,26 +42,19 @@ module Middleman
         end
 
         def git_author_time
-          Numstats.new(source_file).find(&:changed?).try(:time)
+          change = Numstats.new(source_file).find(&:changed?)
+          change.time if change
         end
 
         def git_clean?
-          IO.popen(GIT_STATUS + [source_file]) { |output| output.read.empty? }
+          IO.popen(%w(git status --porcelain --) + [source_file]) do |output|
+            output.read.empty?
+          end
         end
       end
 
       def self.available?
         system(*%w(git rev-parse), err: File::NULL)
-      end
-
-      def self.load
-        if available?
-          super
-
-          Middleman::Sitemap::Resource.class_eval do
-            include ResourceIncludes
-          end
-        end
       end
     end
   end

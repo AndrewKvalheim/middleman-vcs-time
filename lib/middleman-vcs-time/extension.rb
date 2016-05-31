@@ -1,5 +1,3 @@
-require 'middleman-core'
-
 module Middleman
   module VCSTime
     # Middleman extension
@@ -12,9 +10,9 @@ module Middleman
       end
 
       def after_configuration
-        systems = [Git, Fallback]
+        vcs = [Git, Fallback].find(&:available?)
 
-        systems.detect(&:load)
+        Middleman::Sitemap::Resource.prepend vcs::ResourceIncludes
       end
     end
   end

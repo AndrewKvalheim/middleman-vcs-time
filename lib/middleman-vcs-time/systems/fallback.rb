@@ -5,14 +5,12 @@ module Middleman
       # Extensions to sitemap resources
       module ResourceIncludes
         def mtime
-          File.exist?(source_file) ? File.mtime(source_file) : Time.now
+          source_file ? File.mtime(source_file) : Time.now
         end
       end
 
-      def self.load
-        Middleman::Sitemap::Resource.class_eval do
-          include ResourceIncludes
-        end
+      def self.available?
+        true
       end
     end
   end

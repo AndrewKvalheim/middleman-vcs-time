@@ -13,5 +13,5 @@ end
 
 Then /^I should see the file modification time of "([^\"]*)"$/ do |file|
   target = expand_path(file)
-  step %(I should see "#{ File.mtime(target).to_i }")
+  step %(I should see "#{File.mtime(target).to_i}")
 end

@@ -2,13 +2,13 @@ env:
   - CUCUMBER_FORMAT=pretty
 language: ruby
 rvm:
-  - 2.1.10
   - 2.2.5
   - 2.3.1
 gemfile:
-  - gemfiles/middleman_3.4.gemfile
-  - gemfiles/middleman_3_unreleased.gemfile
+  - gemfiles/middleman_4.0.gemfile
+  - gemfiles/middleman_4.1.gemfile
+  - gemfiles/middleman_unreleased.gemfile
 matrix:
   allow_failures:
-    - gemfile: gemfiles/middleman_3_unreleased.gemfile
+    - gemfile: gemfiles/middleman_unreleased.gemfile
 script: bundle exec rake test

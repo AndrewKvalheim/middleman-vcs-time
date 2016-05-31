@@ -1,3 +1,7 @@
-require 'middleman-vcs-time/extension'
+require 'middleman-core'
 
-Middleman::VCSTime::Extension.register :vcs_time
+::Middleman::Extensions.register :vcs_time do
+  require 'middleman-vcs-time/extension'
+
+  Middleman::VCSTime::Extension
+end
