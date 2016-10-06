@@ -3,9 +3,11 @@ require 'pathname'
 module Middleman
   module VCSTime
     # Interface to Git metadata
-    class Git < Fallback
+    class Git
       # Extensions to sitemap resources
       module ResourceIncludes
+        include Fallback::ResourceIncludes
+
         def mtime
           @_mtime ||= git_clean? ? git_author_time : super
         end
