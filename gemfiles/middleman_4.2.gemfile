@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-gem "middleman-core", "~> 4.1.0"
+gem "middleman-core", "~> 4.2.0"
 
 group :test do
   gem "appraisal", "~> 2.0"

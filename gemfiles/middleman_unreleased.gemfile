@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-gem "middleman-core", :github => "middleman/middleman", :branch => "master"
+gem "middleman-core", github: "middleman/middleman", branch: "master"
 
 group :test do
   gem "appraisal", "~> 2.0"
@@ -12,4 +12,4 @@ group :test do
   gem "rspec", "~> 3.0"
 end
 
-gemspec :path => "../"
+gemspec path: "../"

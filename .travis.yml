@@ -2,11 +2,13 @@ env:
   - CUCUMBER_FORMAT=pretty
 language: ruby
 rvm:
-  - 2.2.5
-  - 2.3.1
+  - 2.2.8
+  - 2.3.5
+  - 2.4.2
 gemfile:
   - gemfiles/middleman_4.0.gemfile
   - gemfiles/middleman_4.1.gemfile
+  - gemfiles/middleman_4.2.gemfile
   - gemfiles/middleman_unreleased.gemfile
 matrix:
   allow_failures:
