@@ -3,7 +3,7 @@ $LOAD_PATH.push File.expand_path('../lib', __FILE__)
 Gem::Specification.new do |gem|
   # Identity
   gem.name     = 'middleman-vcs-time'
-  gem.version  = '0.0.5'
+  gem.version  = '0.0.6'
   gem.homepage = 'https://github.com/AndrewKvalheim/middleman-vcs-time'
   gem.summary  = 'Use version control to determine last-modified times of ' \
                  'Middleman resources.'
